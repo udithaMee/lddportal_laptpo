@@ -19,15 +19,9 @@ Route::get('/', function () {
 //auth route for both 
 Route::group(['middleware' => ['auth']], function() { 
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
-});
-// for users
-Route::group(['middleware' => ['auth', 'role:admin']], function() { 
-    Route::get('/dashboard/register', 'App\Http\Controllers\DashboardController@create')->name('register');
-});
-Route::group(['middleware' => ['auth', 'role:admin']], function() { 
-    Route::post('/dashboard/register', 'App\Http\Controllers\DashboardController@store')->name('register');
-});
-/*Route::get('/dashboard', function () {
+}); 
+/*
+ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard'); */
 

@@ -1,6 +1,6 @@
 <?php
-/*
-namespace App\Http\Controllers\Auth;
+
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -10,21 +10,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class RegisteredUserController extends Controller
-
+class CreateUserController extends Controller
 {
-    /**
+   /**
      * Display the registration view.
      *
      * @return \Illuminate\View\View
      */
-  /* public function create()
-        
-         {  
-                return view('auth.register');
-         }
-    
-    
+    public function create()
+    {
+        return view('auth.register');
+    }
+
     /**
      * Handle an incoming registration request.
      *
@@ -33,7 +30,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-   /*  public function store(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -41,14 +38,14 @@ class RegisteredUserController extends Controller
             'password' => 'required|string|confirmed|min:8',
         ]);
 
-        Auth::login($user = User::create([
+        Auth::user($user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]));
-        $user->attachRole($request->role_id);
+        $user->attachRole($request->role_id); 
         event(new Registered($user));
 
         return redirect(RouteServiceProvider::HOME);
     }
-}*/
+}

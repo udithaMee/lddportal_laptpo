@@ -6,9 +6,19 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
+//use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\CreateUserController;  
+
+Route::group(['middleware' => ['auth','role:admin']], function() { 
+    Route::get('dashboard/register', [CreateUserController::class, 'create'])->name('dashboard.register');
+});
+Route::group(['middleware' => ['auth','role:admin']], function() { 
+    Route::post('dashboard/register', [CreateUserController::class, 'store']);
+});
+           
 
 /*Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')

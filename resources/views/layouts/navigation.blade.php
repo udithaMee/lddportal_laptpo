@@ -18,7 +18,7 @@
                 </div>
                 @if (Auth::user()->hasRole('admin'))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('register')" :active="request()->routeIs('auth.register')">
+                    <x-nav-link :href="route('dashboard.register')" :active="request()->routeIs('auth.register')">
                         {{ __('Register a new user') }}
                     </x-nav-link>
                 </div>

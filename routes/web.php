@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\UserAdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,4 +25,12 @@ Route::group(['middleware' => ['auth']], function() {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard'); */
 
+
+Route::group(['middleware' => ['auth','role:admin']], function() {
+  Route::get('/dashboard/users', [UserAdminController::class, 'index'])->name('dashboard');
+});
+
+Route::group(['middleware' => ['auth','role:admin']], function() {
+  Route::resource('dashboard/users', UserAdminController::class);
+});
 require __DIR__.'/auth.php';

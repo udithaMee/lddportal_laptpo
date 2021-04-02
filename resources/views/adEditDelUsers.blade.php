@@ -16,6 +16,9 @@
                         <th>Email</th>
                         <th>ID</th>
                         <th>Role</th>
+                        <th scope="col" class="relative px-6 py-3">
+                            <span class="sr-only">Edit</span>
+                          </th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -28,27 +31,44 @@
                             @foreach ($user->roles as $role )
                             <td>{{ $role->name}} </td>   
                             @endforeach
+                                                                    
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900">{{  __('Edit')}}</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="#" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                  Update 
+                                </a>
+                              </td>
+                                <td>
+                                <div><button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                         {{ __('Delete') }}
+                        </button>
                             
-                                          
+                        </div>
+                       
+                            
                            </td>
                             
-                          </tr>
+                        </tr>
                         @endforeach
                      
                     </tbody>
                 </table>
-                   @if (Auth::user()->hasRole('admin'))
-    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-        <x-nav-link :href="route('dashboard.register')" :active="request()->routeIs('auth.register')">
-           {{ __('Register a new user') }}
-        </x-nav-link>
-    @endif
 
-                </div>
+                <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                    <div class="inline-flex rounded-md shadow">
+                        <a href href="route('dashboard.register')" :active="request()->routeIs('auth.register')"
+                            class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                           Add New User </a>
+                    </div>
+                 </div>
+                 
+                </div> 
             </div>
         </div>
     </div>
-    
+
 
 </x-app-layout>
 

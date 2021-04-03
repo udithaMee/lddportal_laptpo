@@ -1,8 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h1 class="font-semibold text-xl text-gray-800 leading-tight"> 
             {{ __('User Management Page for Administrators of LDDS Portal') }}
-        </h2>
+            <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                <div class="inline-flex rounded-md shadow">
+                    <a href href="route('dashboard.register')" :active="request()->routeIs('auth.register')"
+                        class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                       Add New User </a>
+                </div>
+        </h1>
     </x-slot>
 
     <div class="py-12">
@@ -12,9 +18,9 @@
                    <table class="table-auto">
                     <thead>
                       <tr>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>ID</th>
                         <th>Role</th>
                         <th scope="col" class="relative px-6 py-3">
                             <span class="sr-only">Edit</span>
@@ -25,9 +31,10 @@
                     <tbody>
                         @foreach($users as $user )
                         <tr>
+                            <td>{{ $user->id }}</td>
                             <td>{{ $user->name}}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->id }}</td>
+                            
                             @foreach ($user->roles as $role )
                             <td>{{ $role->name}} </td>   
                             @endforeach
@@ -62,13 +69,14 @@
                             class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
                            Add New User </a>
                     </div>
+                   <!-- {{ $users->links() }}-->
                  </div>
                  
                 </div> 
             </div>
         </div>
     </div>
-
+   
 
 </x-app-layout>
 

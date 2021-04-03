@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        <img src="{{asset('storage/img/logo.jpg')}}" x-application-logo class= "block h-10 w-auto fill-current text-gray-600">
+                       <!-- <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />-->
                     </a>
                 </div>
 
@@ -16,19 +17,15 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-                @if (Auth::user()->hasRole('admin'))
+                @if (Auth::user()->hasRole('admin') and (Route::has('dashboard.register')))
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard.register')" :active="request()->routeIs('auth.register')">
+                    <x-nav-link :href=" route('dashboard.register')" :active="request()->routeIs('auth.register')">
                         {{ __('Register a new user') }}
                     </x-nav-link>
                 </div>
                 @endif
+                
                 </div>
-                <!--('dashboard.register')" :active="request()->routeIs('dashboard.register') this lines from original welcome page 
-                    @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif -->
-               
             
 
             <!-- Settings Dropdown -->

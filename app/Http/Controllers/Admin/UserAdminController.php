@@ -20,7 +20,7 @@ class UserAdminController extends Controller
         //$users=User::all();
         return view('adEditDelUsers',[
             
-            'users'=>User::all()
+            'users'=>User::paginate()
             
             
             ]);

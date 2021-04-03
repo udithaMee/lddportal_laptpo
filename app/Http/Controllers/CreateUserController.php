@@ -46,6 +46,8 @@ class CreateUserController extends Controller
         $user->attachRole($request->role_id); 
         event(new Registered($user));
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('/dashboard/users')->with('status', 'Profile created!');
+
+        //return redirect(RouteServiceProvider::HOME);
     }
 }

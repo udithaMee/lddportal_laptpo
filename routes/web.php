@@ -16,6 +16,14 @@ use App\Http\Controllers\Admin\UserAdminController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/myNav', function () {
+  return view('mynav');
+});
+Route::get('/team', function () {
+  return view('team');
+});
+
+
 //auth route for both 
 Route::group(['middleware' => ['auth']], function() { 
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');

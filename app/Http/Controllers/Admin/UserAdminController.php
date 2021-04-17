@@ -21,6 +21,7 @@ class UserAdminController extends Controller
         return view('adEditDelUsers',[
             
             'users'=>User::paginate()
+
             
             
             ]);

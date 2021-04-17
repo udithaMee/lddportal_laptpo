@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserAdminController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,23 +23,31 @@ Route::get('/myNav', function () {
 Route::get('/team', function () {
   return view('team');
 });
+  Route::get('/documents', function () {
+    return view('documents');
+
+});
+
 
 
 //auth route for both 
 Route::group(['middleware' => ['auth']], function() { 
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
 }); 
+
+
+Route::group(['middleware' => ['auth','role:admin']], function() {
+  Route::get('/dashboard/users', [UserAdminController::class, 'index'])->name('dashboard.users');
+  
+});
+
+//Route::group(['middleware' => ['auth','role:teacher']], function() {
+Route::get('/dashboard/report', [PostController::class,'index'])->name('dashboard.report');
+Route::post('/dashboard/report', [PostController::class,'store']);
+//});
 /*
  Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard'); */
 
-
-Route::group(['middleware' => ['auth','role:admin']], function() {
-  Route::get('/dashboard/users', [UserAdminController::class, 'index'])->name('dashboard');
-});
-
-Route::group(['middleware' => ['auth','role:admin']], function() {
-  Route::resource('dashboard/users', UserAdminController::class);
-});
 require __DIR__.'/auth.php';

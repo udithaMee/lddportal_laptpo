@@ -22,12 +22,19 @@
                     <x-nav-link :href=" route('dashboard.register')" :active="request()->routeIs('auth.register')">
                         {{ __('Register a new user') }}
                     </x-nav-link>
+                    <x-nav-link :href=" route('dashboard.users')" :active="request()->routeIs('dashboard.users')">
+                        {{ __('Manage Users') }}
+                    </x-nav-link>
                 </div>
                 @endif
-                
+                @if (Auth::user()->hasRole('teacher') and (Route::has('dashboard.report')))
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href=" route('dashboard.report')" :active="request()->routeIs('dashboard.report')">
+                        {{ __('Report Incident') }}
+                    </x-nav-link>
                 </div>
-            
-
+            @endif
+            </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">

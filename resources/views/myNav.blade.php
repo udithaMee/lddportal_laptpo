@@ -10,7 +10,20 @@
                                 <!-- <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />-->
                                 </a>
                             </div> 
-                             
+                            <div class="hidden md:block">
+                                <div class="ml-10 flex items-baseline space-x-4">
+                                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                                  <a href="{{ url('/dashboard')  }}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                    
+                                  <a href="{{ url('/team')  }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Team</a>
+                    
+                                  <a href="{{ url('/documents')  }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Project Documents</a>
+                    
+                                  <a href="http://3.137.81.235/LDD_Portal/insights.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Visualization</a>
+                    
+                                  <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</a>
+                                </div>
+                              </div>     
                             
                 <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
                         @if (Route::has('login'))
@@ -31,3 +44,4 @@
         </div>  
     </div>  
 </nav>
+

@@ -27,7 +27,7 @@
                                 <div class="min-h-screen bg-gray-100">
                                     @include('myNav')
                                 <main>
-                                                <header class="bg-white shadow text-center">
+                                                <header class="bg-blue-200 shadow text-center">
                                                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">          
                                                         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                                                         {{ __('Our Team') }}

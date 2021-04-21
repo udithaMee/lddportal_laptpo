@@ -30,6 +30,7 @@ Route::get('/team', function () {
 
 
 
+
 //auth route for both 
 Route::group(['middleware' => ['auth']], function() { 
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
